@@ -1,0 +1,16 @@
+{
+    "Reservas": [
+        {
+            "id": 1,
+            "estado": true,
+            "dataIn": "2000",
+            "dataFi": "2006"
+        },
+        {
+            "id": 2,
+            "estado": true,
+            "dataIn": "2017",
+            "dataFi": "2025"
+        }
+    ]
+}
