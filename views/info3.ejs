@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ODS 7 - ¿Podemos ser autosuficientes energéticamente?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #005a8d;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      animation: fadeInDown 1s ease-out;
+    }
+    main {
+      padding: 2rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+      animation: fadeInUp 1s ease-out;
+    }
+    h1, h2, h3, h4 {
+      color: #005a8d;
+      margin-top: 1.5rem;
+    }
+    .dataset-cards, .tratamiento-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      justify-content: center;
+    }
+    .dataset-card, .tratamiento-card, .impacto-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+      min-width: 220px;
+      max-width: 320px;
+      flex: 1 1 220px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .dataset-card:hover, .tratamiento-card:hover, .impacto-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.13);
+    }
+    .dataset-link {
+      display: inline-block;
+      margin-top: 0.7rem;
+      background: #0077b6;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .dataset-link:hover {
+      background: #005a8d;
+    }
+    ul {
+      text-align: left;
+      margin: 1rem 0 1.5rem 0;
+      padding-left: 1.2rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    .impacto-circular {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+    .impacto-card {
+      background: #eaf6f6;
+      border-left: 6px solid #00b894;
+      text-align: left;
+    }
+    .img-link {
+      display: block;
+      margin: 1.5rem auto 0 auto;
+      text-align: center;
+    }
+    .img-link img {
+      max-width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      transition: transform 0.2s;
+    }
+    .img-link img:hover {
+      transform: scale(1.04);
+    }
+    .back-home-btn {
+      display: inline-block;
+      background: #005a8d;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      border-radius: 8px;
+      margin: 2rem auto;
+      transition: background 0.3s;
+    }
+    .back-home-btn:hover {
+      background: #003d5c;
+    }
+    @media (max-width: 800px) {
+      .dataset-cards, .tratamiento-list, .impacto-circular {
+        flex-direction: column;
+        align-items: center;
+      }
+      .img-link img {
+        max-width: 95vw;
+      }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ODS 7 - Energía asequible y no contaminante</h1>
+    <h2>¿Podemos ser autosuficientes energéticamente?</h2>
+  </header>
+
+  <main>
+    <section>
+      <h3>✅ Análisis del contenido</h3>
+      <p>
+        <strong>Pregunta clave:</strong> <br>
+        <span style="font-size:1.15em; color:#0077b6;"><b>¿Podrían las comunidades autónomas subsistir con la energía que ellas mismas producen?</b></span>
+      </p>
+      <p>
+        Para responderla, cruzamos datos de producción, consumo y demanda horaria de energía en Cataluña. Así, analizamos si cada comarca podría cubrir su propio consumo con la energía que genera.
+      </p>
+    </section>
+
+    <section>
+      <h4>🧩 Componentes del análisis</h4>
+      <div class="dataset-cards">
+        <div class="dataset-card">
+          <h5>📁 instalaciones.csv</h5>
+          <p><b>¿Qué mide?</b> Capacidad de generación energética por comarca.</p>
+          <a href="#grafico-autosuficiencia" class="dataset-link">Ver gráfico</a>
+        </div>
+        <div class="dataset-card">
+          <h5>📁 consumoPorComunidad.csv</h5>
+          <p><b>¿Qué mide?</b> Consumo eléctrico real por comarca y sector.</p>
+          <a href="#grafico-autosuficiencia" class="dataset-link">Ver gráfico</a>
+        </div>
+        <div class="dataset-card">
+          <h5>📁 demandaEnergiaHoraria.csv</h5>
+          <p><b>¿Qué mide?</b> Variabilidad horaria y picos de consumo.</p>
+          <a href="#grafico-autosuficiencia" class="dataset-link">Ver gráfico</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h4>🔍 ¿Cómo se hace el análisis?</h4>
+      <div class="tratamiento-list">
+        <div class="tratamiento-card">
+          <h5>🔌 Potencia instalada</h5>
+          <ul>
+            <li>Agrupar por <b>Comarca</b>.</li>
+            <li>Sumar la columna <b>Potencia (kW)</b>.</li>
+            <li>Indica cuánta energía puede generar cada comarca.</li>
+          </ul>
+        </div>
+        <div class="tratamiento-card">
+          <h5>📈 Consumo energético</h5>
+          <ul>
+            <li>Agrupar por <b>Comarca</b>.</li>
+            <li>Sumar la columna <b>Consum [kWh]</b>.</li>
+            <li>Nos dice cuánto ha consumido realmente cada comarca.</li>
+          </ul>
+        </div>
+        <div class="tratamiento-card">
+          <h5>⏰ Demanda horaria</h5>
+          <ul>
+            <li>Analizar consumo por hora y día.</li>
+            <li>Identificar picos y valles de demanda.</li>
+            <li>Evalúa si la producción cubriría las horas críticas.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h4>🧠 ¿Por qué es relevante este enfoque?</h4>
+      <ul>
+        <li>Combina datos geográficos y energéticos para cada comarca.</li>
+        <li>Permite ver si la capacidad instalada cubre el consumo real.</li>
+        <li>Considera la distribución horaria, clave para renovables como solar o eólica.</li>
+      </ul>
+      <div class="img-link">
+        <a href="/images/autosuficiencia.png" target="_blank">
+          <img src="/images/autosuficiencia.png" alt="Gráfico de autosuficiencia energética">
+        </a>
+        <div style="font-size:0.95em; color:#555;">Haz clic en la imagen para ampliarla</div>
+      </div>
+    </section>
+
+    <section>
+      <h4>♻️ Economía circular e impacto verde</h4>
+      <div class="impacto-circular">
+        <div class="impacto-card">
+          <b>Economía circular</b>
+          <ul>
+            <li>Promueve la producción y consumo local de energía.</li>
+            <li>Reduce pérdidas y dependencia externa.</li>
+            <li>Favorece la reutilización y modernización de infraestructuras.</li>
+          </ul>
+        </div>
+        <div class="impacto-card">
+          <b>Impacto verde</b>
+          <ul>
+            <li>Fomenta el uso de energías renovables.</li>
+            <li>Reduce emisiones y huella de carbono.</li>
+            <li>Permite planificar una transición energética justa y sostenible.</li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        <b>En resumen:</b> Este análisis ayuda a avanzar hacia un modelo energético más eficiente, sostenible y justo, alineado con los principios de la economía circular y el impacto verde.
+      </p>
+    </section>
+
+    <section>
+      <h4>¿Qué obtenemos con este análisis?</h4>
+      <ul>
+        <li>Comparación entre producción y consumo energético por comarca.</li>
+        <li>Identificación de regiones con superávit o déficit energético.</li>
+        <li>Oportunidades para expandir energías renovables.</li>
+        <li>Evaluación realista de la autosuficiencia energética territorial.</li>
+      </ul>
+      <p style="margin-top:1rem;">
+        ¿Quieres explorar los datos originales? Consulta <a href="https://analisi.transparenciacatalunya.cat/?sortBy=relevance&pageSize=20&category=Energia" target="_blank" rel="noopener">Dades Obertes de Catalunya</a>.
+      </p>
+    </section>
+
+    <section>
+      <h3>⚡ Impacto de Días de Alta o Baja Demanda</h3>
+      <p>
+        <b>Objetivo:</b> Analizar cómo responde el sistema energético de Cataluña ante días con consumos extremos, cruzando la demanda diaria con la capacidad y tipo de instalaciones de generación.
+      </p>
+      <div class="dataset-cards">
+        <div class="dataset-card">
+          <h5>🎯 ¿Qué se analiza?</h5>
+          <ul>
+            <li><b>Detección de días extremos:</b> Se identifican los días con mayor y menor demanda usando <i>demandaEnergiaHoraria.csv</i>.</li>
+            <li><b>Cruzamiento con generación:</b> Se estudia qué instalaciones (solar, eólica, térmica...) están presentes en las comarcas con mayor consumo en esos días, usando <i>instalaciones.csv</i>.</li>
+          </ul>
+        </div>
+        <div class="dataset-card">
+          <h5>🔍 ¿Qué preguntas responde?</h5>
+          <ul>
+            <li>¿Las comarcas con alta demanda tienen suficiente generación local?</li>
+            <li>¿Qué tecnologías predominan en días de picos o valles?</li>
+            <li>¿Dónde hay mayor desajuste entre demanda y generación?</li>
+            <li>¿Qué zonas dependen más de la red externa en momentos críticos?</li>
+          </ul>
+        </div>
+        <div class="dataset-card">
+          <h5>🧩 Aplicaciones prácticas</h5>
+          <ul>
+            <li>Planificación energética y diseño de infraestructuras más resilientes.</li>
+            <li>Optimización del despliegue renovable en zonas vulnerables.</li>
+            <li>Evaluar la autosuficiencia real en condiciones críticas.</li>
+          </ul>
+          <a href="#grafico-picos" class="dataset-link">Ver gráfico de picos vs generación</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="grafico-picos">
+      <h4>📊 Visualización: Picos de Demanda vs Generación Local</h4>
+      <div class="img-link">
+        <a href="/images/picos-vs-generacion.png" target="_blank">
+          <img src="/images/picos-vs-generacion.png" alt="Gráfico de picos de demanda y generación local">
+        </a>
+        <div style="font-size:0.95em; color:#555;">Haz clic en la imagen para ampliarla</div>
+      </div>
+    </section>
+
+    <section>
+      <h4>♻️ Economía circular e impacto verde en días extremos</h4>
+      <div class="impacto-circular">
+        <div class="impacto-card">
+          <b>Economía circular</b>
+          <ul>
+            <li>Optimiza el uso de infraestructuras existentes, evitando nuevas construcciones innecesarias.</li>
+            <li>Fomenta sistemas energéticos flexibles y almacenamiento para aprovechar excedentes.</li>
+            <li>Reduce residuos energéticos y promueve el uso circular de la energía.</li>
+          </ul>
+        </div>
+        <div class="impacto-card">
+          <b>Impacto verde</b>
+          <ul>
+            <li>Impulsa renovables donde más se necesitan, reduciendo emisiones.</li>
+            <li>Minimiza el transporte de energía y las pérdidas asociadas.</li>
+            <li>Mejora la resiliencia frente a eventos climáticos extremos.</li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        <b>En resumen:</b> Analizar los días de alta y baja demanda ayuda a crear un sistema energético más eficiente, resiliente y alineado con los principios de la economía circular y el impacto verde.
+      </p>
+    </section>
+
+    <section>
+      <h3>🌞 Identificación de Regiones con Potencial para Nuevas Renovables</h3>
+      <p>
+        <b>Objetivo:</b> Detectar comarcas donde el consumo energético es alto pero la capacidad de generación es baja, señalando oportunidades claras para instalar energías renovables y reducir la dependencia externa.
+      </p>
+      <div class="dataset-cards">
+        <div class="dataset-card">
+          <h5>📁 instalaciones.csv</h5>
+          <ul>
+            <li><b>Columna clave:</b> Potencia instalada</li>
+            <li>Filtrado y suma por comarca</li>
+            <li>Resultado: Potencia total instalada por comarca</li>
+          </ul>
+        </div>
+        <div class="dataset-card">
+          <h5>📁 consumoPorComunidad.csv</h5>
+          <ul>
+            <li><b>Columna clave:</b> Consumo energético</li>
+            <li>Filtrado y suma por comarca</li>
+            <li>Resultado: Consumo total por comarca</li>
+          </ul>
+        </div>
+        <div class="dataset-card">
+          <h5>📁 demandaEnergiaHoraria.csv</h5>
+          <ul>
+            <li>Permite refinar el análisis con la variabilidad horaria del consumo (si hay datos geográficos por hora)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h4>⚙️ ¿Cómo se realiza el análisis?</h4>
+      <div class="tratamiento-list">
+        <div class="tratamiento-card">
+          <h5>Pasos principales</h5>
+          <ul>
+            <li>Agrupar ambos datasets por <b>Comarca</b>.</li>
+            <li>Sumar <b>Potencia instalada</b> y <b>Consumo total</b> por comarca.</li>
+            <li>Calcular el <b>índice de autosuficiencia</b>:
+              <br>
+              <span style="font-size:0.95em; color:#0077b6;">
+                Índice = Potencia instalada / Consumo total
+              </span>
+            </li>
+            <li>Ordenar por este índice para priorizar dónde invertir en renovables.</li>
+          </ul>
+        </div>
+        <div class="tratamiento-card">
+          <h5>¿Cómo se visualiza?</h5>
+          <ul>
+            <li>Gráfico de barras agrupadas: compara potencia instalada y consumo por comarca.</li>
+            <li>O bien, diagrama de dispersión: identifica visualmente las comarcas con mayor déficit.</li>
+          </ul>
+          <a href="#grafico-renovables" class="dataset-link">Ver gráfico de potencial renovable</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="grafico-renovables">
+      <h4>📊 Visualización: Potencial para Nuevas Renovables</h4>
+      <div class="img-link">
+        <a href="/images/potencial-renovables.png" target="_blank">
+          <img src="/images/potencial-renovables.png" alt="Gráfico de potencial para nuevas renovables">
+        </a>
+        <div style="font-size:0.95em; color:#555;">Haz clic en la imagen para ampliarla</div>
+      </div>
+    </section>
+
+    <section>
+      <h4>🌱 Sostenibilidad, Economía Circular e Impacto Verde</h4>
+      <div class="impacto-circular">
+        <div class="impacto-card">
+          <b>Economía circular</b>
+          <ul>
+            <li>Fomenta la autosuficiencia energética local y reduce pérdidas por transporte.</li>
+            <li>Aprovecha recursos subutilizados (espacio, sol, viento) en cada comarca.</li>
+            <li>Minimiza residuos y emisiones al priorizar renovables donde más se necesitan.</li>
+          </ul>
+        </div>
+        <div class="impacto-card">
+          <b>Impacto verde</b>
+          <ul>
+            <li>Reduce la huella de carbono al orientar inversiones hacia zonas con alta demanda no cubierta.</li>
+            <li>Optimiza la planificación energética y acelera la transición a energías limpias.</li>
+            <li>Promueve la equidad territorial en la transición energética.</li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        <b>Conclusión:</b> Este análisis estratégico permite cerrar ciclos energéticos a nivel local, reducir impactos ambientales y optimizar el uso de recursos renovables, cumpliendo los principios de la economía circular y el impacto verde.
+      </p>
+    </section>
+  </main>
+
+  <div style="text-align:center; margin: 2rem 0;">
+    <a href="/home" class="back-home-btn">
+      ⚡ Volver a la página principal
+    </a>
+  </div>
+
+  <%- include('partials/footer', { footerText: footerText }) %>
+</body>
+</html>

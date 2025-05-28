@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ODS 7 - Energía asequible y no contaminante</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background: #005a8d;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    h1, h2 {
+      margin: 0;
+    }
+
+    main {
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .dataset-cards, .tratamiento-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .dataset-card, .tratamiento-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dataset-card:hover, .tratamiento-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .dataset-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: #0077b6;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .dataset-link:hover {
+      background: #005a8d;
+    }
+
+    h3, h4 {
+      margin-top: 2rem;
+      color: #005a8d;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .back-home-btn {
+      display: inline-block;
+      background: #005a8d;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .back-home-btn:hover {
+      background: #003d5c;
+    }
+
+    /* Animaciones */
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      header h2 { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Objetivo de Desarrollo Sostenible 7</h1>
+    <h2>Energía asequible y no contaminante</h2>
+  </header>
+
+  <main>
+    <section>
+      <h3>Datos y análisis para entender la energía en Cataluña</h3>
+      <p>
+        Analizamos la autosuficiencia energética y los hábitos de consumo usando datos abiertos de la Generalitat de Catalunya. Estos son los tres conjuntos principales:
+      </p>
+
+      <div class="dataset-cards">
+        <div class="dataset-card">
+          <h4>⏰ Demanda horaria</h4>
+          <p>Consumo eléctrico hora a hora en Cataluña.</p>
+          <a href="https://analisi.transparenciacatalunya.cat/Energia/Demanda-hor-ria-d-electricitat-a-Catalunya-des-del-/gk6p-9m6r" target="_blank" rel="noopener" class="dataset-link">Ver dataset</a>
+        </div>
+        <div class="dataset-card">
+          <h4>🔌 Consumo por comunidad</h4>
+          <p>Consumo anual por municipio y sector económico.</p>
+          <a href="https://analisi.transparenciacatalunya.cat/Energia/Consum-el-ctric-per-municipi-sector-i-any-a-Catalun/8r6s-nytv" target="_blank" rel="noopener" class="dataset-link">Ver dataset</a>
+        </div>
+        <div class="dataset-card">
+          <h4>🌱 Instalaciones de generación</h4>
+          <p>Mapa y potencia de las plantas de energía.</p>
+          <a href="https://analisi.transparenciacatalunya.cat/Energia/Instal-lacions-de-generaci-d-electricitat-a-Catalun/8r6s-nytv" target="_blank" rel="noopener" class="dataset-link">Ver dataset</a>
+        </div>
+      </div>
+
+      <h4>¿Cómo tratamos los datos?</h4>
+      <div class="tratamiento-list">
+        <div class="tratamiento-card">
+          <h5>Demanda horaria</h5>
+          <ul>
+            <li>Limpieza de fechas y nombres de columnas.</li>
+            <li>Conversión de datos horarios a números.</li>
+            <li>Análisis de patrones diarios y anuales.</li>
+          </ul>
+        </div>
+        <div class="tratamiento-card">
+          <h5>Consumo por comunidad</h5>
+          <ul>
+            <li>Agrupación por comunidad y sector.</li>
+            <li>Filtrado por años y sumas totales.</li>
+            <li>Comparación regional y por actividad.</li>
+          </ul>
+        </div>
+        <div class="tratamiento-card">
+          <h5>Instalaciones</h5>
+          <ul>
+            <li>Agrupación de potencia por comunidad.</li>
+            <li>Filtrado por tecnología renovable/no renovable.</li>
+            <li>Cálculo de capacidad de generación.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>¿Para qué sirve todo esto?</h4>
+      <ul>
+        <li>Visualizar el consumo y la generación de energía por zonas.</li>
+        <li>Comparar consumo total y energía renovable instalada.</li>
+        <li>Detectar hábitos y momentos de mayor demanda.</li>
+        <li>Identificar regiones con potencial para energías limpias.</li>
+      </ul>
+
+      <p style="margin-top:1rem;">
+        ¿Quieres explorar más? Consulta los datos originales en <a href="https://analisi.transparenciacatalunya.cat/?sortBy=relevance&pageSize=20&category=Energia" target="_blank" rel="noopener">Dades Obertes de Catalunya</a>.
+      </p>
+    </section>
+  </main>
+
+  <div style="text-align:center; margin: 2rem 0;">
+    <a href="/home" class="back-home-btn">⚡ Volver a la página principal</a>
+  </div>
+
+  <%- include('partials/footer', { footerText: footerText }) %>
+</body>
+</html>

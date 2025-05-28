@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODS 7 - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <div class="auth-container">
+        <% if (typeof username!='undefined' ) { %>
+        <div class="form-container">
+            <h2>¡Hola <%=username%>!</h2>
+            <p style="color:#bf360c; font-weight:600; margin-bottom:1.2rem;">Estás en el panel de administración
+            </p>
+            <button id="close-session">Cerrar sesión</button>
+        </div>
+        <% } %>
+
+        <% if (typeof username==='undefined' ) { %>
+        <div class="form-container">
+            <form id="login-form" autocomplete="off">
+                <h2>Iniciar sesión</h2>
+                <label for="login-username">Usuario</label>
+                <input type="text" id="login-username" name="username" required>
+
+                <label for="login-password">Contraseña</label>
+                <input type="password" id="login-password" name="password" required>
+
+                <button type="submit">Entrar</button>
+                <span>&nbsp;</span>
+            </form>
+        </div>
+        <div class="divider">o regístrate</div>
+        <div class="form-container">
+            <form id="register-form" autocomplete="off">
+                <h2>Registro</h2>
+                <label for="register-username">Usuario</label>
+                <input type="text" id="register-username" name="username" required autocomplete="off">
+
+                <label for="register-password">Contraseña</label>
+                <input type="password" id="register-password" name="password" required autocomplete="new-password">
+
+                <label for="register-confirm-password">Repite la contraseña</label>
+                <input type="password" id="register-confirm-password" name="confirm-password" required autocomplete="new-password">
+
+                <button type="submit">Registrarse</button>
+                <span>&nbsp;</span>
+            </form>
+        </div>
+        <% } %>
+    </div>
+    <script>
+        const $ = el => document.querySelector(el);
+        const loginForm = $('#login-form');
+        const loginSpan = $('#login-form span');
+        const registerForm = $('#register-form');
+        const registerSpan = $('#register-form span');
+        const logoutButton = $('#close-session');
+
+        loginForm?.addEventListener('submit', e => {
+            e.preventDefault();
+            const username = $('#login-username').value;
+            const password = $('#login-password').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            })
+            .then(res => {
+                if (res.ok) {
+                    loginSpan.innerText = 'Sesión iniciada. Entrando...';
+                    loginSpan.className = 'success';
+                    setTimeout(() => {
+                        window.location.href = '/home';
+                    }, 1200);
+                } else {
+                    loginSpan.innerText = 'Error al iniciar sesión';
+                    loginSpan.className = 'error';
+                }
+            });
+        });
+
+        registerForm?.addEventListener('submit', e => {
+            e.preventDefault();
+            const username = $('#register-username').value;
+            const password = $('#register-password').value;
+            const confirmPassword = $('#register-confirm-password').value;
+
+            if (password != confirmPassword) {
+                registerSpan.innerText = 'Las contraseñas no coinciden';
+                registerSpan.className = 'error';
+                return;
+            }
+
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            })
+            .then(res => {
+                if (res.ok) {
+                    registerSpan.innerText = 'Usuario registrado. Inicia sesión.';
+                    registerSpan.className = 'success';
+                } else {
+                    registerSpan.innerText = 'Error al registrar usuario';
+                    registerSpan.className = 'error';
+                }
+            });
+        });
+
+        logoutButton?.addEventListener('click', e => {
+            e.preventDefault();
+            fetch('/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => {
+                window.location.href = '/';
+            });
+        });
+    </script>
+</body>
+
+</html>

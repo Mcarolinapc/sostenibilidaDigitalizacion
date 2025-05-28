@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ODS 7 - Propuesta de Solución Energética Regional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #005a8d;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      animation: fadeInDown 1s ease-out;
+    }
+    main {
+      padding: 2rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+      animation: fadeInUp 1s ease-out;
+    }
+    h1, h2, h3, h4 {
+      color: #005a8d;
+      margin-top: 1.5rem;
+    }
+    .solucion-cards, .fase-list, .impacto-circular {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      justify-content: center;
+    }
+    .solucion-card, .fase-card, .impacto-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+      min-width: 220px;
+      max-width: 340px;
+      flex: 1 1 220px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .solucion-card:hover, .fase-card:hover, .impacto-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.13);
+    }
+    ul {
+      text-align: left;
+      margin: 1rem 0 1.5rem 0;
+      padding-left: 1.2rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    .impacto-circular {
+      margin-top: 2rem;
+    }
+    .impacto-card {
+      background: #eaf6f6;
+      border-left: 6px solid #00b894;
+      text-align: left;
+    }
+    .resultado-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .resultado-table th, .resultado-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: left;
+    }
+    .resultado-table th {
+      background: #0077b6;
+      color: #fff;
+    }
+    .resultado-table tr:last-child td {
+      border-bottom: none;
+    }
+    .back-home-btn {
+      display: inline-block;
+      background: #005a8d;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      border-radius: 8px;
+      margin: 2rem auto;
+      transition: background 0.3s;
+    }
+    .back-home-btn:hover {
+      background: #003d5c;
+    }
+    @media (max-width: 800px) {
+      .solucion-cards, .fase-list, .impacto-circular {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ODS 7 - Energía asequible y no contaminante</h1>
+    <h2>Propuesta de solución basada en el análisis de autosuficiencia energética regional</h2>
+  </header>
+
+  <main>
+    <section class="fade-in-section">
+      <h3>🎯 Objetivo de la solución</h3>
+      <div class="solucion-cards">
+        <div class="solucion-card">
+          <p>
+            Evaluar y fomentar la autosuficiencia energética local en cada comarca, utilizando fuentes renovables, para reducir la dependencia energética externa, optimizar la eficiencia del sistema y avanzar hacia una economía circular con alto impacto verde.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-in-section">
+      <h3>🔧 Solución propuesta: 3 fases</h3>
+      <div class="fase-list">
+        <div class="fase-card">
+          <h4>1. Diagnóstico de autosuficiencia</h4>
+          <ul>
+            <li>Comparar potencia instalada vs. consumo real.</li>
+            <li>Identificar comarcas autosuficientes, deficitarias o excedentarias.</li>
+            <li>Visualizar en un mapa energético regional.</li>
+          </ul>
+        </div>
+        <div class="fase-card">
+          <h4>2. Intervención en comarcas deficitarias</h4>
+          <ul>
+            <li>Instalar energías renovables (solar, eólica, mini-hidráulica).</li>
+            <li>Fomentar almacenamiento energético local.</li>
+            <li>Estudiar redes de autoconsumo compartido.</li>
+            <li>
+              <span style="color:#00b894;">♻️ Economía circular:</span> Promueve el consumo y producción local.
+            </li>
+            <li>
+              <span style="color:#43a047;">🌿 Impacto verde:</span> Disminuye la huella de carbono.
+            </li>
+          </ul>
+        </div>
+        <div class="fase-card">
+          <h4>3. Gestión del excedente y días críticos</h4>
+          <ul>
+            <li>Almacenamiento en horas valle.</li>
+            <li>Vertido a red o venta a otras comarcas si hay excedente.</li>
+            <li>Desarrollar sistemas de respuesta a la demanda.</li>
+            <li>
+              <span style="color:#00b894;">Ventaja circular:</span> Cierra el ciclo energético en tiempo real.
+            </li>
+            <li>
+              <span style="color:#43a047;">Impacto verde:</span> Mayor estabilidad y menor dependencia de fuentes no renovables.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-in-section">
+      <h3>📈 Resultado esperado del enfoque</h3>
+      <table class="resultado-table">
+        <tr>
+          <th>Área</th>
+          <th>Resultado</th>
+        </tr>
+        <tr>
+          <td>Técnico</td>
+          <td>Optimización del sistema energético local</td>
+        </tr>
+        <tr>
+          <td>Económico</td>
+          <td>Reducción de costes energéticos a largo plazo y nuevas oportunidades de empleo local</td>
+        </tr>
+        <tr>
+          <td>Ambiental</td>
+          <td>Disminución de emisiones GEI, menos infraestructura fósil, mayor resiliencia climática</td>
+        </tr>
+        <tr>
+          <td>Social</td>
+          <td>Mayor equidad energética entre territorios, empoderamiento comunitario</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="fade-in-section">
+      <h3>💡 Conclusión</h3>
+      <div class="solucion-cards">
+        <div class="solucion-card">
+          <p>
+            Este análisis va más allá de un ejercicio técnico. Se convierte en una base sólida para diseñar políticas públicas energéticas sostenibles, descentralizadas y justas, cumpliendo con los principios de la economía circular y generando un alto impacto verde.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div style="text-align:center; margin: 2rem 0;">
+    <a href="/home" class="back-home-btn">
+      ⚡ Volver a la página principal
+    </a>
+  </div>
+
+  <%- include('partials/footer', { footerText: footerText }) %>
+</body>
+</html>
