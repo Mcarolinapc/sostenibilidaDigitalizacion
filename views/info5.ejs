@@ -68,6 +68,33 @@
       margin: auto;
       animation: fadeInUp 1s ease-out;
     }
+    /* Dashboard interactivo */
+    .dashboard-interactivo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    .dashboard-card {
+      flex: 1 1 350px;
+      min-width: 300px;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 900px) {
+      .bottom-section, .dashboard-interactivo {
+        flex-direction: column;
+        align-items: center;
+      }
+      .dashboard-card {
+        max-width: 95vw;
+      }
+    }
   </style>
 </head>
 
@@ -78,43 +105,39 @@
   </header>
 
   <main>
-
-
-    <div class="dashboard">
-      <div class="top-section img-link">
-        <img src="grafBarras.png" alt="Grafico barras">
+    <section class="dashboard">
+      <div class="top-section">
+        <h3>ODS 7: Energía asequible y no contaminante</h3>
+        <p>El ODS 7 busca garantizar el acceso universal a energía asequible, fiable, sostenible y moderna para todos.</p>
       </div>
       <div class="bottom-section">
         <div class="left-box">
-          <img src="mapaCalor.png" alt="MapaCalor">
+          <h4>Datos de la comarca</h4>
+          <p>Potencia instalada: 1.200 MW</p>
+          <p>Consumo real: 1.000 MW</p>
+          <p>Porcentaje de autosuficiencia: 83%</p>
         </div>
-        <div class="right-box img-link">
-          <!-- Gráfico Evolucion de demanda horaria  -->
-          <img src="graficoJS.png" alt="graficoLineas">
+        <div class="right-box">
+          <h4>Comparativa con otras comarcas</h4>
+          <p>Comarca A: Autosuficiente</p>
+          <p>Comarca B: Deficitarias</p>
+          <p>Comarca C: Excedentarias</p>
         </div>
       </div>
-    </div>
 
-    <section class="fade-in-section">
-      <h3>¿Cómo se implementa?</h3>
-      <ul>
-        <li>Inversión en energías renovables a nivel local y global.</li>
-        <li>Mejora de infraestructuras energéticas en países en desarrollo.</li>
-        <li>Fomento de políticas públicas sostenibles.</li>
-        <li>Financiación y cooperación internacional para proyectos energéticos.</li>
-        <li>Promoción de tecnologías limpias en industrias y hogares.</li>
-        <li>Educación sobre el uso responsable de la energía.</li>
-      </ul>
-    </section>
-
-    <section class="fade-in-section">
-      <h3>Indicadores clave</h3>
-      <ul>
-        <li>Acceso a la electricidad.</li>
-        <li>Uso de combustibles limpios para cocinar.</li>
-        <li>Proporción de energías renovables en el consumo total.</li>
-        <li>Mejora de la eficiencia energética global.</li>
-      </ul>
+    <!-- Dashboard interactivo -->
+    <section>
+      <h3 style="text-align:center; margin-top:2rem;">📊 Dashboard interactivo: Comparativa energética</h3>
+      <div class="dashboard-interactivo">
+        <div class="dashboard-card">
+          <h4 style="text-align:center;">Potencia instalada vs Consumo real</h4>
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="dashboard-card" style="max-width:350px;">
+          <h4 style="text-align:center;">Distribución de comarcas</h4>
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -124,7 +147,71 @@
     </a>
   </div>
 
+  <!-- Scripts del dashboard interactivo -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Datos de ejemplo, reemplaza por los datos reales de tu análisis
+    const comarcas = ['Barcelona', 'Vallès Occ.', 'Terra Alta', 'Alt Empordà', 'Baix Llobregat'];
+    const potenciaInstalada = [200, 150, 400, 350, 100]; // MW
+    const consumoReal = [350, 300, 100, 120, 250]; // MW
+
+    // Gráfico de barras
+    new Chart(document.getElementById('barChart'), {
+      type: 'bar',
+      data: {
+        labels: comarcas,
+        datasets: [
+          {
+            label: 'Potencia instalada (MW)',
+            data: potenciaInstalada,
+            backgroundColor: 'rgba(0, 123, 255, 0.7)'
+          },
+          {
+            label: 'Consumo real (MW)',
+            data: consumoReal,
+            backgroundColor: 'rgba(40, 167, 69, 0.7)'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: false }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    // Datos de ejemplo para el gráfico de sectores
+    const autosuficientes = 2;
+    const deficitarias = 2;
+    const excedentarias = 1;
+
+    new Chart(document.getElementById('pieChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Autosuficientes', 'Deficitarias', 'Excedentarias'],
+        datasets: [{
+          data: [autosuficientes, deficitarias, excedentarias],
+          backgroundColor: [
+            'rgba(40, 167, 69, 0.7)',
+            'rgba(220, 53, 69, 0.7)',
+            'rgba(255, 193, 7, 0.7)'
+          ]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+  </script>
+
   <%- include('partials/footer', { footerText: footerText }) %>
 </body>
-
 </html>
