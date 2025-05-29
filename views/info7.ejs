@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudio Teórico: Despliegue de una App usando Jenkins</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f9f9f9;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #005a8d;
+            color: white;
+            padding: 2rem 1rem 1rem 1rem;
+            text-align: center;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        main {
+            padding: 2rem 1rem;
+            max-width: 1100px;
+            margin: auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #005a8d;
+            margin-top: 1.5rem;
+        }
+
+        .cards-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+            min-width: 220px;
+            max-width: 400px;
+            flex: 1 1 220px;
+            text-align: left;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.13);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        th,
+        td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: left;
+        }
+
+        th {
+            background: #0077b6;
+            color: #fff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .etapa-diagrama {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 2rem 0 1rem 0;
+            flex-wrap: wrap;
+            font-size: 1.1em;
+        }
+
+        .etapa {
+            background: #eaf6f6;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            margin: 0 0.2rem;
+            color: #005a8d;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        .etapa.active {
+            background: #00b894;
+            color: #fff;
+        }
+
+        .arrow {
+            font-size: 1.3em;
+            color: #0077b6;
+        }
+
+        .check {
+            color: #43a047;
+            font-size: 1.2em;
+            margin-left: 0.2em;
+        }
+
+        .tip {
+            background: #eaf6f6;
+            border-left: 5px solid #00b894;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            color: #222;
+        }
+
+        @media (max-width: 900px) {
+            .cards-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                max-width: 95vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Estudio Teórico: Despliegue de una App usando Jenkins</h1>
+    </header>
+    <main>
+        <section>
+            <h3>1️⃣ Costes estimados mensuales (solo Jenkins, no escalable)</h3>
+            <div class="cards-row">
+                <div class="card">
+                    <b>VPS o servidor remoto</b><br>
+                    Hetzner CX11 (2 GB RAM, 1 vCPU, 20 GB SSD)<br>
+                    <span style="color:#43a047;">4,15 €/mes</span>
+                </div>
+                <div class="card">
+                    <b>Dominio personalizado (opcional)</b><br>
+                    .com/.es (ej: Namecheap, OVH)<br>
+                    <span style="color:#43a047;">~1 €/mes</span>
+                </div>
+                <div class="card">
+                    <b>Certificado SSL</b><br>
+                    Let's Encrypt (gratuito)<br>
+                    <span style="color:#43a047;">0 €</span>
+                </div>
+                <div class="card">
+                    <b>Jenkins (software)</b><br>
+                    Open Source<br>
+                    <span style="color:#43a047;">0 €</span>
+                </div>
+                <div class="card">
+                    <b>Ancho de banda</b><br>
+                    Incluido en VPS<br>
+                    <span style="color:#43a047;">0–3 € extra si se excede</span>
+                </div>
+                <div class="card">
+                    <b>Backups automáticos (opcional)</b><br>
+                    Incluido en algunos VPS o +1 €/mes<br>
+                    <span style="color:#43a047;">~1–2 €</span>
+                </div>
+            </div>
+            <div class="tip">
+                <b>🔹 Total mensual básico:</b> <span style="font-size:1.15em; color:#0077b6;">~4 a 6 €</span>
+            </div>
+        </section>
+
+        <section>
+            <h3>☁️ 2. Sistemas cloud vs Jenkins local</h3>
+            <table>
+                <tr>
+                    <th>Aspecto</th>
+                    <th>Jenkins (servidor propio)</th>
+                    <th>Cloud pública (AWS, GCP, Azure, etc.)</th>
+                </tr>
+                <tr>
+                    <td>Escalabilidad</td>
+                    <td>Baja</td>
+                    <td>Alta (automática según demanda)</td>
+                </tr>
+                <tr>
+                    <td>Mantenimiento</td>
+                    <td>Tú eres responsable (updates, logs, backups)</td>
+                    <td>El proveedor lo gestiona</td>
+                </tr>
+                <tr>
+                    <td>Coste inicial</td>
+                    <td>Bajo</td>
+                    <td>Puedes empezar gratis (free tier) o escalar rápido</td>
+                </tr>
+                <tr>
+                    <td>Privacidad/control</td>
+                    <td>Total control sobre datos y procesos</td>
+                    <td>Dependes del proveedor</td>
+                </tr>
+                <tr>
+                    <td>Curva de aprendizaje</td>
+                    <td>Media</td>
+                    <td>Alta (muchos servicios, IAM, billing, etc.)</td>
+                </tr>
+                <tr>
+                    <td>Casos recomendados</td>
+                    <td>Proyectos personales, educativos, MVPs</td>
+                    <td>Apps empresariales, APIs de uso masivo, autoscaling</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h3>🔄 3. ¿Dónde aplica Jenkins en el proceso de desarrollo?</h3>
+            <div class="etapa-diagrama">
+                <span class="etapa">Planificación</span>
+                <span class="arrow">→</span>
+                <span class="etapa">Desarrollo</span>
+                <span class="arrow">→</span>
+                <span class="etapa">TESTS</span>
+                <span class="arrow">→</span>
+                <span class="etapa active">CI/CD: Jenkins <span class="check">✅</span></span>
+                <span class="arrow">↓</span>
+                <span class="etapa">Despliegue automático</span>
+            </div>
+            <ul>
+                <li><b>CI:</b> Integra automáticamente el código nuevo desde el repositorio.</li>
+                <li><b>CD:</b> Despliega la app automáticamente al servidor tras cada cambio (o bajo condiciones).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>🔐 4. Sistemas de seguridad aplicables (local / global)</h3>
+            <table>
+                <tr>
+                    <th>Tipo de seguridad</th>
+                    <th>Nivel</th>
+                    <th>Herramientas / Buenas prácticas</th>
+                </tr>
+                <tr>
+                    <td>Autenticación</td>
+                    <td>Local</td>
+                    <td>Jenkins con 2FA, usuarios con roles</td>
+                </tr>
+                <tr>
+                    <td>Firewall</td>
+                    <td>Local</td>
+                    <td>UFW, iptables (bloquear todo excepto puertos 22, 80, 443, 8080)</td>
+                </tr>
+                <tr>
+                    <td>Certificados SSL</td>
+                    <td>Global</td>
+                    <td>Let's Encrypt con auto renovación</td>
+                </tr>
+                <tr>
+                    <td>Backups</td>
+                    <td>Local</td>
+                    <td>Copias automáticas de /var/lib/jenkins</td>
+                </tr>
+                <tr>
+                    <td>Auditoría de cambios</td>
+                    <td>Local</td>
+                    <td>Jenkins guarda logs por job y por usuario</td>
+                </tr>
+                <tr>
+                    <td>Red privada virtual</td>
+                    <td>Global</td>
+                    <td>Acceso a Jenkins solo por VPN o IP específica</td>
+                </tr>
+                <tr>
+                    <td>Accesos SSH</td>
+                    <td>Local</td>
+                    <td>Uso de claves públicas/privadas, deshabilitar login por contraseña</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h3>📦 5. Uso y recomendaciones prácticas</h3>
+            <div class="cards-row">
+                <div class="card">
+                    <b>Ideal para proyectos personales o de tamaño medio</b><br>
+                    Sin necesidad de alta disponibilidad.
+                </div>
+                <div class="card">
+                    <b>Control total sobre el pipeline</b><br>
+                    Personaliza cada paso según tus necesidades.
+                </div>
+                <div class="card">
+                    <b>Ahorro importante</b><br>
+                    Más económico que GitHub Actions, CircleCI o AWS CodePipeline.
+                </div>
+                <div class="card">
+                    <b>Mejor en VPS externa</b><br>
+                    Más disponibilidad y menor riesgo que en tu propio PC.
+                </div>
+                <div class="card">
+                    <b>Jenkins + Docker</b><br>
+                    Mejora la portabilidad y replicabilidad del entorno.
+                </div>
+            </div>
+        </section>
+    </main>
+    <div style="text-align:center; margin: 2rem 0;">
+        <a href="/home" class="back-home-btn">
+            ⚡ Volver a la página principal
+        </a>
+    </div>
+
+    <%- include('partials/footer', { footerText: footerText }) %>
+</body>
+
+</html>

@@ -38,4 +38,10 @@ router.get('/info6', (req, res) => {
   });
 });
 
+router.get('/info7', (req, res) => {
+  res.render('info7', {
+    footerText: req.genericFooter
+  });
+});
+
 export default router;
