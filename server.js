@@ -117,8 +117,8 @@ app.use('/', requireAuth, (req, res, next) => {
 }, infoRoutes);
 
 
-app.listen(3000, () => {
-    console.log("Servidor en http://localhost:3000");
+app.listen(3005, () => {
+    console.log("Servidor en http://localhost:3005");
 });
 
 //app.use(express.static("public"));
