@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ODS 7 - ¿Podemos ser autosuficientes energéticamente?</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@1.2.0/dist/chartjs-chart-matrix.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
   <style>
@@ -115,14 +117,14 @@
     }
 
     .img-link img {
-      max-width: 320px;
+      max-width: 700px;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
       transition: transform 0.2s;
     }
 
     .img-link img:hover {
-      transform: scale(1.04);
+      transform: scale(2);
     }
 
     .back-home-btn {
@@ -257,10 +259,12 @@
         <li>Permite ver si la capacidad instalada cubre el consumo real.</li>
         <li>Considera la distribución horaria, clave para renovables como solar o eólica.</li>
       </ul>
+    </section>
+
+    <section id="tratamiento-card">
+      <h4>📊 Visualización: </h4>
       <div class="img-link">
-        <a href="/images/autosuficiencia.png" target="_blank">
-          <img src="/images/autosuficiencia.png" alt="Gráfico de autosuficiencia energética">
-        </a>
+        <img src="grafBarras.png" alt="Grafico barras">
         <div style="font-size:0.95em; color:#555;">Haz clic en la imagen para ampliarla</div>
       </div>
     </section>
@@ -361,9 +365,7 @@
     <section id="grafico-picos">
       <h4>📊 Visualización: Picos de Demanda vs Generación Local</h4>
       <div class="img-link">
-        <a href="/images/picos-vs-generacion.png" target="_blank">
-          <img src="/images/picos-vs-generacion.png" alt="Gráfico de picos de demanda y generación local">
-        </a>
+        <img src="mapaCalor.png" alt="">
         <div style="font-size:0.95em; color:#555;">Haz clic en la imagen para ampliarla</div>
       </div>
     </section>
@@ -457,12 +459,12 @@
     <section id="grafico-renovables">
       <h4>📊 Visualización: Potencial para Nuevas Renovables</h4>
       <div class="img-link">
-        <a href="/images/potencial-renovables.png" target="_blank">
-          <img src="/images/potencial-renovables.png" alt="Gráfico de potencial para nuevas renovables">
-        </a>
-        <div style="font-size:0.95em; color:#555;">Haz clic en la imagen para ampliarla</div>
+        <img src="regionesPotencial.png" alt="Potencial para Nuevas Renovables">  
       </div>
     </section>
+
+    
+
     <section>
       <h4>🌱 Sostenibilidad, Economía Circular e Impacto Verde</h4>
       <div class="impacto-circular">

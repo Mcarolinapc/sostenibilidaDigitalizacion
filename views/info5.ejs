@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ODS 7 - Energía asequible y no contaminante</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+  <style>
+    .dashboard {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .top-section {
+      background-color: #e74c3c;
+      /* rojo */
+      height: 400px;
+      border-radius: 10px;
+      padding: 1rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    .bottom-section {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .left-box,
+    .right-box {
+      flex: 1;
+      height: 250px;
+      border-radius: 10px;
+      padding: 1rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    .left-box {
+      background-color: #3498db;
+      /* azul */
+    }
+
+    .right-box {
+      background-color: #2ecc71;
+      /* verde */
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: scale-down;
+      border-radius: 10px;
+    }
+
+    .img-link {
+      display: block;
+      margin: 1.5rem auto 0 auto;
+      text-align: center;
+    }
+    main {
+      padding: 2rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+      animation: fadeInUp 1s ease-out;
+    }
+  </style>
 </head>
+
 <body>
   <header>
     <h1>Objetivo de Desarrollo Sostenible 7</h1>
@@ -14,25 +78,22 @@
   </header>
 
   <main>
-    <section class="fade-in-section">
-      <h3>¿Qué es el ODS 7?</h3>
-      <p>
-        El ODS 7 forma parte de los 17 Objetivos de Desarrollo Sostenible de la Agenda 2030 de las Naciones Unidas.
-        Su meta es garantizar el acceso universal a una energía asequible, segura, sostenible y moderna.
-      </p>
-    </section>
 
-    <section class="fade-in-section">
-      <h3>Objetivo principal</h3>
-      <p>
-        Asegurar que todas las personas del mundo tengan acceso a:
-      </p>
-      <ul>
-        <li>Electricidad fiable y a precio justo.</li>
-        <li>Energías limpias y renovables (solar, eólica, hidroeléctrica, etc.).</li>
-        <li>Tecnologías energéticas modernas y eficientes.</li>
-      </ul>
-    </section>
+
+    <div class="dashboard">
+      <div class="top-section img-link">
+        <img src="grafBarras.png" alt="Grafico barras">
+      </div>
+      <div class="bottom-section">
+        <div class="left-box">
+          <img src="mapaCalor.png" alt="MapaCalor">
+        </div>
+        <div class="right-box img-link">
+          <!-- Gráfico Evolucion de demanda horaria  -->
+          <img src="graficoJS.png" alt="graficoLineas">
+        </div>
+      </div>
+    </div>
 
     <section class="fade-in-section">
       <h3>¿Cómo se implementa?</h3>
@@ -65,4 +126,5 @@
 
   <%- include('partials/footer', { footerText: footerText }) %>
 </body>
+
 </html>

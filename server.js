@@ -9,6 +9,7 @@ import infoRoutes from './Routes/infoRoutes.js';
 const app = express();//paso1 prepara el servidor
 //app.use(bodyParser.json());//transforma de forma binaria a format json (serializacion)
 app.use(express.json());
+app.use(express.static("src"));//carpeta src pel IMG
 app.use(express.static("public"));//carpeta publica pel css
 app.set('view engine','ejs');//Fem servir el motor ejs
 app.set('views', './views'); //carpeta on desem els arxius .ejs

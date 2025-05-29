@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ODS 7 - Energía asequible y no contaminante</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@1.2.0/dist/chartjs-chart-matrix.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/main.css">
+  <style>
+    .img-link {
+      display: block;
+      margin: 1.5rem auto 0 auto;
+      text-align: center;
+    }
+
+    .img-link img {
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+      transition: transform 0.2s;
+    }
+
+    .img-link img:hover {
+      transform: scale(2);
+    }
+  </style>
 </head>
+
 <body>
   <header>
     <h1>Objetivo de Desarrollo Sostenible 7</h1>
@@ -14,46 +36,103 @@
   </header>
 
   <main>
+    
     <section class="fade-in-section">
-      <h3>¿Qué es el ODS 7?</h3>
+      <h3>Otras Visualizaciónes</h3>
       <p>
-        El ODS 7 forma parte de los 17 Objetivos de Desarrollo Sostenible de la Agenda 2030 de las Naciones Unidas.
-        Su meta es garantizar el acceso universal a una energía asequible, segura, sostenible y moderna.
+        Estas visualizaciónes las hicimos para entender los datos con los que trabajamos
       </p>
+      
+    </section>
+
+    <section id="grafico-renovables">
+      <div class="img-link">
+        <!-- Gráfico Evolucion de demanda horaria  -->
+        <div class="grafico-box">
+          <h2>Consumo Medio por Año</h2>
+          <canvas id="graficoAnual"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      fetch('http://localhost:3000/comarcas')
+        .then(res => res.json())
+        .then(data => {
+          const consumoPorAnyo = {};
+
+          data.forEach(entry => {
+            const anyo = entry["Any"];
+            const consumo = parseFloat(entry["Consum [kWh]"]);
+
+            if (!isNaN(consumo)) {
+              if (!consumoPorAnyo[anyo]) {
+                consumoPorAnyo[anyo] = { total: 0, count: 0 };
+              }
+              consumoPorAnyo[anyo].total += consumo;
+              consumoPorAnyo[anyo].count += 1;
+            }
+          });
+
+          const labels = Object.keys(consumoPorAnyo).sort();
+          const valores = labels.map(anyo => {
+            const { total, count } = consumoPorAnyo[anyo];
+            return (total / count).toFixed(2);
+          });
+
+          new Chart(document.getElementById('graficoAnual'), {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'Consumo medio (kWh)',
+                data: valores,
+                borderColor: '#059669',
+                backgroundColor: '#059669',
+                tension: 0.3,
+                pointRadius: 3,
+                pointHoverRadius: 5
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Evolución del consumo medio por año',
+                  font: { size: 18 }
+                },
+                legend: { display: false }
+              },
+              scales: {
+                x: {
+                  title: { display: true, text: 'Año' }
+                },
+                y: {
+                  title: { display: true, text: 'Consumo medio (kWh)' }
+                }
+              }
+            }
+          });
+        })
+        .catch(error => console.error('Error al cargar datos de /comarcas:', error));
+    </script>
+
+    
+
+    <section class="fade-in-section">
+      <div class="img-link">
+        <h2>Consumo por sector</h2>
+        <img src="ConsumoSector.png" alt="Consumo por sector">
+      </div>
     </section>
 
     <section class="fade-in-section">
-      <h3>Objetivo principal</h3>
-      <p>
-        Asegurar que todas las personas del mundo tengan acceso a:
-      </p>
-      <ul>
-        <li>Electricidad fiable y a precio justo.</li>
-        <li>Energías limpias y renovables (solar, eólica, hidroeléctrica, etc.).</li>
-        <li>Tecnologías energéticas modernas y eficientes.</li>
-      </ul>
-    </section>
-
-    <section class="fade-in-section">
-      <h3>¿Cómo se implementa?</h3>
-      <ul>
-        <li>Inversión en energías renovables a nivel local y global.</li>
-        <li>Mejora de infraestructuras energéticas en países en desarrollo.</li>
-        <li>Fomento de políticas públicas sostenibles.</li>
-        <li>Financiación y cooperación internacional para proyectos energéticos.</li>
-        <li>Promoción de tecnologías limpias en industrias y hogares.</li>
-        <li>Educación sobre el uso responsable de la energía.</li>
-      </ul>
-    </section>
-
-    <section class="fade-in-section">
-      <h3>Indicadores clave</h3>
-      <ul>
-        <li>Acceso a la electricidad.</li>
-        <li>Uso de combustibles limpios para cocinar.</li>
-        <li>Proporción de energías renovables en el consumo total.</li>
-        <li>Mejora de la eficiencia energética global.</li>
-      </ul>
+      <div class="img-link">
+        <h2>Horas de maxima demanda</h2>
+        <img src="demandaEnergretica.png" alt="">
+      </div>
+      
     </section>
   </main>
 
@@ -65,4 +144,5 @@
 
   <%- include('partials/footer', { footerText: footerText }) %>
 </body>
+
 </html>
