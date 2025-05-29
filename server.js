@@ -120,7 +120,6 @@ app.use('/', requireAuth, (req, res, next) => {
 app.listen(3005, () => {
     console.log("Servidor en http://localhost:3005");
 });
-
 //app.use(express.static("public"));
 
 // internamente es nuestra url localhost los que sea , y le digo de normal me sirves home , y  luego si viner/usuario / te vas al fichero que esta 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +15,7 @@
       margin: 0;
       padding: 0;
     }
+
     header {
       background: #005a8d;
       color: white;
@@ -21,27 +23,37 @@
       text-align: center;
       animation: fadeInDown 1s ease-out;
     }
+
     main {
       padding: 2rem 1rem;
       max-width: 1100px;
       margin: auto;
       animation: fadeInUp 1s ease-out;
     }
-    h1, h2, h3, h4 {
+
+    h1,
+    h2,
+    h3,
+    h4 {
       color: #005a8d;
       margin-top: 1.5rem;
     }
-    .dataset-cards, .tratamiento-list {
+
+    .dataset-cards,
+    .tratamiento-list {
       display: flex;
       flex-wrap: wrap;
       gap: 1.5rem;
       margin: 1.5rem 0;
       justify-content: center;
     }
-    .dataset-card, .tratamiento-card, .impacto-card {
+
+    .dataset-card,
+    .tratamiento-card,
+    .impacto-card {
       background: #fff;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       padding: 1.2rem 1.2rem 1.2rem 1.2rem;
       min-width: 220px;
       max-width: 320px;
@@ -49,10 +61,14 @@
       text-align: center;
       transition: transform 0.2s;
     }
-    .dataset-card:hover, .tratamiento-card:hover, .impacto-card:hover {
+
+    .dataset-card:hover,
+    .tratamiento-card:hover,
+    .impacto-card:hover {
       transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.13);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.13);
     }
+
     .dataset-link {
       display: inline-block;
       margin-top: 0.7rem;
@@ -63,17 +79,21 @@
       text-decoration: none;
       transition: background 0.3s;
     }
+
     .dataset-link:hover {
       background: #005a8d;
     }
+
     ul {
       text-align: left;
       margin: 1rem 0 1.5rem 0;
       padding-left: 1.2rem;
     }
+
     li {
       margin-bottom: 0.5rem;
     }
+
     .impacto-circular {
       display: flex;
       flex-wrap: wrap;
@@ -81,25 +101,30 @@
       margin: 2rem 0;
       justify-content: center;
     }
+
     .impacto-card {
       background: #eaf6f6;
       border-left: 6px solid #00b894;
       text-align: left;
     }
+
     .img-link {
       display: block;
       margin: 1.5rem auto 0 auto;
       text-align: center;
     }
+
     .img-link img {
       max-width: 320px;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
       transition: transform 0.2s;
     }
+
     .img-link img:hover {
       transform: scale(1.04);
     }
+
     .back-home-btn {
       display: inline-block;
       background: #005a8d;
@@ -110,28 +135,51 @@
       margin: 2rem auto;
       transition: background 0.3s;
     }
+
     .back-home-btn:hover {
       background: #003d5c;
     }
+
     @media (max-width: 800px) {
-      .dataset-cards, .tratamiento-list, .impacto-circular {
+
+      .dataset-cards,
+      .tratamiento-list,
+      .impacto-circular {
         flex-direction: column;
         align-items: center;
       }
+
       .img-link img {
         max-width: 95vw;
       }
     }
+
     @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-30px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>ODS 7 - Energía asequible y no contaminante</h1>
@@ -143,10 +191,12 @@
       <h3>✅ Análisis del contenido</h3>
       <p>
         <strong>Pregunta clave:</strong> <br>
-        <span style="font-size:1.15em; color:#0077b6;"><b>¿Podrían las comunidades autónomas subsistir con la energía que ellas mismas producen?</b></span>
+        <span style="font-size:1.15em; color:#0077b6;"><b>¿Podrían las comunidades autónomas subsistir con la energía
+            que ellas mismas producen?</b></span>
       </p>
       <p>
-        Para responderla, cruzamos datos de producción, consumo y demanda horaria de energía en Cataluña. Así, analizamos si cada comarca podría cubrir su propio consumo con la energía que genera.
+        Para responderla, cruzamos datos de producción, consumo y demanda horaria de energía en Cataluña. Así,
+        analizamos si cada comarca podría cubrir su propio consumo con la energía que genera.
       </p>
     </section>
 
@@ -154,19 +204,18 @@
       <h4>🧩 Componentes del análisis</h4>
       <div class="dataset-cards">
         <div class="dataset-card">
-          <h5>📁 instalaciones.csv</h5>
+          <h5> instalaciones.csv</h5>
           <p><b>¿Qué mide?</b> Capacidad de generación energética por comarca.</p>
-          <a href="#grafico-autosuficiencia" class="dataset-link">Ver gráfico</a>
+
         </div>
         <div class="dataset-card">
-          <h5>📁 consumoPorComunidad.csv</h5>
+          <h5> consumoPorComunidad.csv</h5>
           <p><b>¿Qué mide?</b> Consumo eléctrico real por comarca y sector.</p>
-          <a href="#grafico-autosuficiencia" class="dataset-link">Ver gráfico</a>
+
         </div>
         <div class="dataset-card">
-          <h5>📁 demandaEnergiaHoraria.csv</h5>
+          <h5> demandaEnergiaHoraria.csv</h5>
           <p><b>¿Qué mide?</b> Variabilidad horaria y picos de consumo.</p>
-          <a href="#grafico-autosuficiencia" class="dataset-link">Ver gráfico</a>
         </div>
       </div>
     </section>
@@ -237,7 +286,8 @@
         </div>
       </div>
       <p>
-        <b>En resumen:</b> Este análisis ayuda a avanzar hacia un modelo energético más eficiente, sostenible y justo, alineado con los principios de la economía circular y el impacto verde.
+        <b>En resumen:</b> Este análisis ayuda a avanzar hacia un modelo energético más eficiente, sostenible y justo,
+        alineado con los principios de la economía circular y el impacto verde.
       </p>
     </section>
 
@@ -250,25 +300,47 @@
         <li>Evaluación realista de la autosuficiencia energética territorial.</li>
       </ul>
       <p style="margin-top:1rem;">
-        ¿Quieres explorar los datos originales? Consulta <a href="https://analisi.transparenciacatalunya.cat/?sortBy=relevance&pageSize=20&category=Energia" target="_blank" rel="noopener">Dades Obertes de Catalunya</a>.
+        ¿Quieres explorar los datos originales? Consulta <a
+          href="https://analisi.transparenciacatalunya.cat/?sortBy=relevance&pageSize=20&category=Energia"
+          target="_blank" rel="noopener">Dades Obertes de Catalunya</a>.
       </p>
     </section>
 
     <section>
       <h3>⚡ Impacto de Días de Alta o Baja Demanda</h3>
+
+      <h3>✅ Analizar cómo responde el sistema energético de Cataluña ante días con consumos extremos, cruzando la
+        demanda diaria con la capacidad y tipo de instalaciones de generación.</h3>
       <p>
-        <b>Objetivo:</b> Analizar cómo responde el sistema energético de Cataluña ante días con consumos extremos, cruzando la demanda diaria con la capacidad y tipo de instalaciones de generación.
+        <strong>Pregunta clave:</strong> <br>
+        <span style="font-size:1.15em; color:#0077b6;"><b>¿Cómo afectan los días extremos de demanda a la operación de
+            las instalaciones?</b></span>
       </p>
+      <p>
+        Este análisis permite identificar las comarcas con mayor consumo energético en días de picos o valles, y
+        evaluar si la generación local es suficiente para cubrir esas demandas.
+      </p>
+    </section>
+    <section>
+      <h4>🧩 Componentes del análisis</h4>
       <div class="dataset-cards">
         <div class="dataset-card">
-          <h5>🎯 ¿Qué se analiza?</h5>
-          <ul>
-            <li><b>Detección de días extremos:</b> Se identifican los días con mayor y menor demanda usando <i>demandaEnergiaHoraria.csv</i>.</li>
-            <li><b>Cruzamiento con generación:</b> Se estudia qué instalaciones (solar, eólica, térmica...) están presentes en las comarcas con mayor consumo en esos días, usando <i>instalaciones.csv</i>.</li>
-          </ul>
+          <h5>demandaEnergiaHoraria.csv</h5>
+          <p><b>Detección de días extremos:</b> Se identifican los días con mayor y menor demanda usando este
+            dataset.</p>
         </div>
         <div class="dataset-card">
-          <h5>🔍 ¿Qué preguntas responde?</h5>
+          <h5>instalaciones.csv</h5>
+          <p><b>Cruzamiento con generación:</b> Se estudia qué instalaciones (solar, eólica, térmica...) están
+            presentes en las comarcas con mayor consumo en esos días.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h4>🔍 ¿Qué preguntas responde?</h4>
+      <div class="tratamiento-list">
+        <div class="tratamiento-card">
           <ul>
             <li>¿Las comarcas con alta demanda tienen suficiente generación local?</li>
             <li>¿Qué tecnologías predominan en días de picos o valles?</li>
@@ -276,16 +348,14 @@
             <li>¿Qué zonas dependen más de la red externa en momentos críticos?</li>
           </ul>
         </div>
-        <div class="dataset-card">
+        <div class="tratamiento-card">
           <h5>🧩 Aplicaciones prácticas</h5>
           <ul>
             <li>Planificación energética y diseño de infraestructuras más resilientes.</li>
             <li>Optimización del despliegue renovable en zonas vulnerables.</li>
             <li>Evaluar la autosuficiencia real en condiciones críticas.</li>
           </ul>
-          <a href="#grafico-picos" class="dataset-link">Ver gráfico de picos vs generación</a>
         </div>
-      </div>
     </section>
 
     <section id="grafico-picos">
@@ -319,14 +389,16 @@
         </div>
       </div>
       <p>
-        <b>En resumen:</b> Analizar los días de alta y baja demanda ayuda a crear un sistema energético más eficiente, resiliente y alineado con los principios de la economía circular y el impacto verde.
+        <b>En resumen:</b> Analizar los días de alta y baja demanda ayuda a crear un sistema energético más
+        eficiente, resiliente y alineado con los principios de la economía circular y el impacto verde.
       </p>
     </section>
 
     <section>
       <h3>🌞 Identificación de Regiones con Potencial para Nuevas Renovables</h3>
       <p>
-        <b>Objetivo:</b> Detectar comarcas donde el consumo energético es alto pero la capacidad de generación es baja, señalando oportunidades claras para instalar energías renovables y reducir la dependencia externa.
+        <b>Objetivo:</b> Detectar comarcas donde el consumo energético es alto pero la capacidad de generación es
+        baja, señalando oportunidades claras para instalar energías renovables y reducir la dependencia externa.
       </p>
       <div class="dataset-cards">
         <div class="dataset-card">
@@ -348,7 +420,8 @@
         <div class="dataset-card">
           <h5>📁 demandaEnergiaHoraria.csv</h5>
           <ul>
-            <li>Permite refinar el análisis con la variabilidad horaria del consumo (si hay datos geográficos por hora)</li>
+            <li>Permite refinar el análisis con la variabilidad horaria del consumo (si hay datos geográficos por
+              hora)</li>
           </ul>
         </div>
       </div>
@@ -377,7 +450,6 @@
             <li>Gráfico de barras agrupadas: compara potencia instalada y consumo por comarca.</li>
             <li>O bien, diagrama de dispersión: identifica visualmente las comarcas con mayor déficit.</li>
           </ul>
-          <a href="#grafico-renovables" class="dataset-link">Ver gráfico de potencial renovable</a>
         </div>
       </div>
     </section>
@@ -391,7 +463,6 @@
         <div style="font-size:0.95em; color:#555;">Haz clic en la imagen para ampliarla</div>
       </div>
     </section>
-
     <section>
       <h4>🌱 Sostenibilidad, Economía Circular e Impacto Verde</h4>
       <div class="impacto-circular">
@@ -413,7 +484,9 @@
         </div>
       </div>
       <p>
-        <b>Conclusión:</b> Este análisis estratégico permite cerrar ciclos energéticos a nivel local, reducir impactos ambientales y optimizar el uso de recursos renovables, cumpliendo los principios de la economía circular y el impacto verde.
+        <b>Conclusión:</b> Este análisis estratégico permite cerrar ciclos energéticos a nivel local, reducir
+        impactos ambientales y optimizar el uso de recursos renovables, cumpliendo los principios de la economía
+        circular y el impacto verde.
       </p>
     </section>
   </main>
@@ -426,4 +499,5 @@
 
   <%- include('partials/footer', { footerText: footerText }) %>
 </body>
+
 </html>
