@@ -42,9 +42,9 @@ Este proyecto es una aplicación web *Full-Stack* desarrollada bajo el entorno d
 
 ##  Core Tecnológico
 
-* ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) **Node.js**: Entorno de ejecución para el Backend.
-* ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) **JavaScript (ES6+)**: Lenguaje principal de desarrollo.
-* ![EJS](https://img.shields.io/badge/EJS-B4CA65?style=for-the-badge&logo=ejs&logoColor=black) **EJS**: Motor de plantillas para Server-Side Rendering.
+* ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+* ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) 
+* ![EJS](https://img.shields.io/badge/EJS-B4CA65?style=for-the-badge&logo=ejs&logoColor=black) 
 * **Librerías Clave**: `bcrypt` (Criptografía), `db-local` (Persistencia en archivos) y `node:crypto`.
 
 ---
